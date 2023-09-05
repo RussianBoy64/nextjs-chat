@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 import "./globals.scss";
+import Wrapper from "@/components/Wrapper";
 
 export const metadata: Metadata = {
   title: "Chat UI",
@@ -17,9 +18,13 @@ interface layoutProps {
 export default function RootLayout({ children }: layoutProps) {
   return (
     <html lang="en">
-      <Header />
-      <body>{children}</body>
-      <Footer />
+      <body>
+        <Wrapper>
+          <Header />
+          {children}
+          <Footer />
+        </Wrapper>
+      </body>
     </html>
   );
 }

@@ -1,9 +1,3 @@
-import Wrapper from "@/components/Wrapper";
-
 export default function Home() {
-  return (
-    <main>
-      <Wrapper>main</Wrapper>
-    </main>
-  );
+  return <main>main</main>;
 }

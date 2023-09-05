@@ -1,0 +1,18 @@
+@import "@/styles/variables.scss";
+
+.menuBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  transition: all $tr-time ease-in-out;
+
+  &:hover path {
+    fill: $blue;
+  }
+}
