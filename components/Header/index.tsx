@@ -7,18 +7,18 @@ import styles from "./header.module.scss";
 const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.header__avatarList}>
+      <ul className={styles.header__avatarList}>
         {BOTS.map((bot) => (
-          <button className={styles.header__avatar}>
+          <li className={styles.header__avatar}>
             <img
               className={styles.header__avatarImg}
               src={bot.avatar.src}
               key={bot.id}
               alt={`${bot.name} avatar`}
             />
-          </button>
+          </li>
         ))}
-      </div>
+      </ul>
       <div className={styles.header__chatInfo}>
         <h1 className={styles.header__chatName}>🦄 Team Unicorns</h1>
         <p className={styles.header__lastVisit}>last seen 45 minutes ago</p>

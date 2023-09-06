@@ -1,9 +1,9 @@
 import { StaticImageData } from "next/image";
 
-import janetAvatar from "@/avatars/janet.png";
-import nicoleAvatar from "@/avatars/nicole.png";
-import AubreyAvatar from "@/avatars/aubrey.png";
-import JavAvatar from "@/avatars/jav.png";
+import janetAvatar from "@/avatars/janet.webp";
+import nicoleAvatar from "@/avatars/nicole.webp";
+import AubreyAvatar from "@/avatars/aubrey.webp";
+import JavAvatar from "@/avatars/jav.webp";
 
 interface IBot {
   id: number;
