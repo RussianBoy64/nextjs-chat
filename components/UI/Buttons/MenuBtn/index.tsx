@@ -1,8 +1,8 @@
-import styles from "./menuBtn.module.scss";
+import styles from "../btn.module.scss";
 
-const MenuBtn = () => {
+const MenuBtn: React.FC = () => {
   return (
-    <button className={styles.menuBtn}>
+    <button className={styles.btn}>
       <svg
         width="16"
         height="16"
