@@ -1,0 +1,15 @@
+@import "@/styles/variables.scss";
+
+.dateInfo {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: $fs-m;
+  color: $gray;
+}
+
+@media (max-width: $lg-screen) {
+  .dateInfo {
+    font-size: $fs-s;
+  }
+}

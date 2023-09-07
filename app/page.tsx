@@ -1,3 +1,11 @@
+import DateInfo from "@/components/DateInfo";
+import MessageFrame from "@/components/MessageFrame";
+
 export default function Home() {
-  return <main>main</main>;
+  return (
+    <main>
+      <DateInfo />
+      <MessageFrame />
+    </main>
+  );
 }

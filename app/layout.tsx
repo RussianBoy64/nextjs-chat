@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
+import Wrapper from "@/components/Wrapper";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-import "./globals.scss";
-import Wrapper from "@/components/Wrapper";
+import "./global.scss";
 
 export const metadata: Metadata = {
   title: "Chat UI",

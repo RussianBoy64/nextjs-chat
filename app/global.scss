@@ -10,7 +10,10 @@ body {
   background-color: $white;
 }
 
-.wrapper {
-  max-width: 1920px;
-  margin: 0 auto;
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
 }

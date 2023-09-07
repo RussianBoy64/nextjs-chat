@@ -1,14 +1,14 @@
 "use client";
 
 import { ChangeEventHandler } from "react";
+import setMessageInputHeight from "helpers/setMessageInputHeight";
 
 import styles from "./messageInput.module.scss";
 
 const MessageInput = () => {
   const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     const textarea = event.target;
-    textarea.style.height = "25px";
-    textarea.style.height = textarea.scrollHeight + "px";
+    setMessageInputHeight(textarea);
   };
 
   return (
