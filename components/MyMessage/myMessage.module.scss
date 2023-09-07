@@ -1,0 +1,39 @@
+@import "@/styles/variables.scss";
+
+.myMessage {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto repeat(2, min-content);
+  grid-template-areas: "text . ." ". time readed";
+  align-items: center;
+  column-gap: 8px;
+  width: fit-content;
+  margin: 0 9px 0 auto;
+  padding: 4px 8px;
+  color: $white;
+  background-color: $bg-blue;
+  border-radius: $border-radius;
+
+  &_tip::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 23px;
+    border-radius: 6px;
+    background-color: #007aff;
+    transform: skewX(-45deg);
+  }
+
+  &__text {
+    grid-area: text;
+    line-height: 20px;
+  }
+
+  &__timeShtamp {
+    grid-area: time;
+    font-size: $fs-s;
+    white-space: nowrap;
+  }
+}

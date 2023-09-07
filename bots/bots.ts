@@ -5,11 +5,18 @@ import nicoleAvatar from "@/avatars/nicole.webp";
 import AubreyAvatar from "@/avatars/aubrey.webp";
 import JavAvatar from "@/avatars/jav.webp";
 
-interface IBot {
+export interface IBot {
   id: number;
   name: string;
   position: string;
   avatar: StaticImageData;
+}
+
+export enum botsNames {
+  Janet,
+  Nicole,
+  Aubrey,
+  Jay,
 }
 
 const BOTS = [

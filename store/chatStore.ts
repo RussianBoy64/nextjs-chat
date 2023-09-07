@@ -1,6 +1,17 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import { typeShtamp } from "helpers/dayjs";
+import { StaticImageData } from "next/image";
+
+export interface IMessage {
+  authorId: number;
+  authorName?: string;
+  authorAvatar?: StaticImageData;
+  text: string;
+  timeShtamp: typeShtamp;
+}
+
 interface chatState {}
 
 export const useCartStore = create<chatState>()(
