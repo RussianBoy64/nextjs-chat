@@ -1,20 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&display=swap");
 
 @import "@/styles/normalize.scss";
 @import "@/styles/variables.scss";
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Jost", sans-serif;
   font-size: $fs-m;
   color: $gray-dark;
   background-color: $white;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px;
+  position: relative;
   min-height: 350px;
 }

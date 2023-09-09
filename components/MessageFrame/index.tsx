@@ -59,12 +59,14 @@ const botMessage3 = {
 const MessageFrame: React.FC = () => {
   return (
     <div className={styles.messageFrame}>
-      <MyMessage messageData={myMessage1} withTip={true} />
-      <MyMessage messageData={myMessage2} withTip={false} />
-      <MyMessage messageData={myMessage3} withTip={false} />
-      <MyMessage messageData={botMessage1} withTip={false} />
-      <MyMessage messageData={botMessage2} withTip={true} />
-      <MyMessage messageData={botMessage3} withTip={true} />
+      <div className={styles.messageFrame__content}>
+        <MyMessage messageData={myMessage1} withTip={true} />
+        <MyMessage messageData={myMessage2} withTip={false} />
+        <MyMessage messageData={myMessage3} withTip={false} />
+        <MyMessage messageData={botMessage1} withTip={false} />
+        <MyMessage messageData={botMessage2} withTip={true} />
+        <MyMessage messageData={botMessage3} withTip={true} />
+      </div>
     </div>
   );
 };
