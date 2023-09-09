@@ -9,6 +9,7 @@ export interface IMessage {
   authorName?: string;
   authorAvatar?: StaticImageData;
   text: string;
+  photo: StaticImageData[];
   timeShtamp: typeShtamp;
 }
 

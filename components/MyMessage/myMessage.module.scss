@@ -4,30 +4,35 @@
   position: relative;
   display: grid;
   grid-template-columns: auto repeat(2, min-content);
-  grid-template-areas: "text . ." ". time readed";
+  grid-template-areas: "content content content" ". time readed";
   align-items: center;
-  column-gap: 8px;
-  width: fit-content;
+  gap: 8px;
   margin: 0 9px 0 auto;
-  padding: 4px 8px;
+  padding: 10px 15px;
   color: $white;
-  background-color: $bg-blue;
+  background-color: $message-bubble-blue;
   border-radius: $border-radius;
 
   &_tip::after {
     content: "";
     position: absolute;
+    z-index: -1;
     top: 0;
     right: 0;
     width: 20px;
     height: 23px;
     border-radius: 6px;
-    background-color: #007aff;
+    background-color: $message-bubble-blue;
     transform: skewX(-45deg);
   }
 
+  &__content {
+    grid-area: content;
+    max-width: $message-content-width-lg;
+  }
+
   &__text {
-    grid-area: text;
+    width: 100%;
     line-height: 20px;
   }
 
@@ -35,5 +40,17 @@
     grid-area: time;
     font-size: $fs-s;
     white-space: nowrap;
+  }
+}
+
+@media (max-width: $lg-screen) {
+  .myMessage__content {
+    max-width: $message-content-width-md;
+  }
+}
+
+@media (max-width: $sm-screen) {
+  .myMessage__content {
+    max-width: $message-content-width-sm;
   }
 }
