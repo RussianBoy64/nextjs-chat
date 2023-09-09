@@ -5,6 +5,7 @@ import img2 from "@/public/jdz6Ks7tRrM.jpg";
 import img3 from "@/public/rpWukAIpAwI.jpg";
 
 import MyMessage from "@/components/MyMessage";
+import OpponentMessage from "../OpponentMessage";
 
 import styles from "./messageFrame.module.scss";
 
@@ -32,6 +33,7 @@ const myMessage3 = {
 const botMessage1 = {
   authorId: 4,
   authorName: BOTS[botsNames.Aubrey].name,
+  authorPosition: BOTS[botsNames.Aubrey].position,
   authorAvatar: BOTS[botsNames.Aubrey].avatar,
   text: "I was thinking the cafe downtown",
   photo: [img1],
@@ -41,6 +43,7 @@ const botMessage1 = {
 const botMessage2 = {
   authorId: 4,
   authorName: BOTS[botsNames.Aubrey].name,
+  authorPosition: BOTS[botsNames.Aubrey].position,
   authorAvatar: BOTS[botsNames.Aubrey].avatar,
   text: "But limited vegan options @Janet!",
   photo: [img1, img2, img3, img1, img2],
@@ -50,6 +53,7 @@ const botMessage2 = {
 const botMessage3 = {
   authorId: 6,
   authorName: BOTS[botsNames.Aubrey].name,
+  authorPosition: BOTS[botsNames.Aubrey].position,
   authorAvatar: BOTS[botsNames.Aubrey].avatar,
   text: "But limited vegan options @Janet!",
   photo: [img1, img2, img3, img1],
@@ -62,9 +66,9 @@ const MessageFrame: React.FC = () => {
       <div className={styles.messageFrame__content}>
         <MyMessage messageData={myMessage1} withTip={true} />
         <MyMessage messageData={myMessage2} withTip={false} />
-        <MyMessage messageData={myMessage3} withTip={false} />
+        <OpponentMessage messageData={myMessage3} withTip={false} />
         <MyMessage messageData={botMessage1} withTip={false} />
-        <MyMessage messageData={botMessage2} withTip={true} />
+        <OpponentMessage messageData={botMessage2} withTip={true} />
         <MyMessage messageData={botMessage3} withTip={true} />
       </div>
     </div>

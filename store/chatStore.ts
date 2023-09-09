@@ -7,6 +7,7 @@ import { StaticImageData } from "next/image";
 export interface IMessage {
   authorId: number;
   authorName?: string;
+  authorPosition?: string;
   authorAvatar?: StaticImageData;
   text: string;
   photo: StaticImageData[];

@@ -1,5 +1,6 @@
 import BOTS from "bots/bots";
 
+import Image from "next/image";
 import MenuBtn from "@/UI/Buttons/MenuBtn";
 
 import styles from "./header.module.scss";
@@ -9,12 +10,14 @@ const Header = () => {
     <header className={styles.header}>
       <ul className={styles.header__avatarList}>
         {BOTS.map((bot) => (
-          <li className={styles.header__avatar}>
-            <img
+          <li className={styles.header__avatar} key={bot.id}>
+            <Image
               className={styles.header__avatarImg}
               src={bot.avatar.src}
-              key={bot.id}
               alt={`${bot.name} avatar`}
+              fill
+              sizes={"32"}
+              key={bot.id}
             />
           </li>
         ))}

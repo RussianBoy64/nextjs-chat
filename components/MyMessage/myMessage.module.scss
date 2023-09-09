@@ -3,8 +3,8 @@
 .myMessage {
   position: relative;
   display: grid;
-  grid-template-columns: auto repeat(2, min-content);
-  grid-template-areas: "content content content" ". time readed";
+  grid-template-columns: 1fr repeat(2, min-content);
+  grid-template-areas: "content content content" "controls time readed";
   align-items: center;
   gap: 8px;
   margin: 0 9px 0 auto;
@@ -36,6 +36,13 @@
     line-height: 20px;
   }
 
+  &__controls {
+    grid-area: controls;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
   &__timeShtamp {
     grid-area: time;
     font-size: $fs-s;
@@ -44,8 +51,12 @@
 }
 
 @media (max-width: $lg-screen) {
-  .myMessage__content {
-    max-width: $message-content-width-md;
+  .myMessage {
+    padding: 4px 7px;
+
+    &__content {
+      max-width: $message-content-width-md;
+    }
   }
 }
 

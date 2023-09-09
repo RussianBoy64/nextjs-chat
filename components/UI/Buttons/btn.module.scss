@@ -19,6 +19,10 @@
     fill: $blue;
   }
 
+  &:active path {
+    fill: $gray-dark;
+  }
+
   &:disabled {
     cursor: initial;
 
@@ -38,6 +42,50 @@
   &_active {
     & path {
       fill: $blue;
+    }
+  }
+}
+
+.messageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all $tr-time ease-in-out;
+
+  path {
+    transition: all $tr-time ease-in-out;
+  }
+
+  &_light {
+    path {
+      fill: $white;
+    }
+
+    &:hover path {
+      fill: $gray-dark;
+    }
+
+    &:active path {
+      fill: $white;
+    }
+  }
+
+  &_dark {
+    path {
+      fill: $gray-dark;
+    }
+
+    &:hover path {
+      fill: $blue;
+    }
+
+    &:active path {
+      fill: $gray-dark;
     }
   }
 }
