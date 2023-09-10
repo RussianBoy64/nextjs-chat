@@ -1,10 +1,21 @@
+"use client";
+
 import style from "../btn.module.scss";
 
-const SendBtn = () => {
-  const btnStyles = `${style.btn} ${style.btn_active}`;
+interface sendBtnProps {
+  isDisabled: boolean;
+}
+
+const SendBtn: React.FC<sendBtnProps> = ({ isDisabled }) => {
+  const btnStyles = `${style.btn} ${isDisabled ? "" : style.btn_active}`;
 
   return (
-    <button className={btnStyles} type="submit" disabled>
+    <button
+      className={btnStyles}
+      type="submit"
+      title="Send message"
+      disabled={isDisabled}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

@@ -12,6 +12,8 @@
   color: $white;
   background-color: $message-bubble-blue;
   border-radius: $border-radius;
+  animation: show 300ms linear 1 normal forwards;
+  transform-origin: right top;
 
   &_tip::after {
     content: "";
@@ -63,5 +65,16 @@
 @media (max-width: $sm-screen) {
   .myMessage__content {
     max-width: $message-content-width-sm;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
   }
 }

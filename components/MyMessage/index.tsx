@@ -1,4 +1,3 @@
-import { getTime } from "helpers/dayjs";
 import { IMessage } from "@/store/chatStore";
 
 import PhotoGrid from "../PhotoGrid";
@@ -14,9 +13,10 @@ interface messageProps {
 }
 
 const Message: React.FC<messageProps> = ({ messageData, withTip }) => {
-  const { time, timeShtamp } = getTime(messageData.timeShtamp);
+  const { time, timeShtamp } = messageData.timeShtamp;
   const messageStyle = `${styles.myMessage} ${withTip ? styles.myMessage_tip : ""}`;
   const isPhotos = messageData.photo.length > 0;
+  messageData.text;
 
   return (
     <div className={messageStyle}>
@@ -27,8 +27,8 @@ const Message: React.FC<messageProps> = ({ messageData, withTip }) => {
       </div>
 
       <div className={styles.myMessage__controls}>
-        <EditBtn color={editBtnColors.light} />
-        <RemoveBtn color={removeBtnColors.light} />
+        <EditBtn messageId={messageData.messageId} color={editBtnColors.light} />
+        <RemoveBtn messageId={messageData.messageId} color={removeBtnColors.light} />
       </div>
 
       <time className={styles.myMessage__timeShtamp} dateTime={timeShtamp}>

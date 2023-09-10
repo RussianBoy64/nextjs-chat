@@ -15,7 +15,7 @@ interface opponentMessageProps {
 }
 
 const OpponentMessage: React.FC<opponentMessageProps> = ({ messageData, withTip }) => {
-  const { time, timeShtamp } = getTime(messageData.timeShtamp);
+  const { time, timeShtamp } = messageData.timeShtamp;
   const messageStyle = `${styles.opponentMessage} ${
     withTip ? styles.opponentMessage_tip : ""
   }`;
@@ -47,10 +47,6 @@ const OpponentMessage: React.FC<opponentMessageProps> = ({ messageData, withTip 
           <p className={styles.opponentMessage__text}>{messageData.text}</p>
 
           {isPhotos && <PhotoGrid images={messageData.photo} />}
-        </div>
-        <div className={styles.opponentMessage__controls}>
-          <EditBtn color={editBtnColors.dark} />
-          <RemoveBtn color={removeBtnColors.dark} />
         </div>
         <time className={styles.opponentMessage__timeShtamp} dateTime={timeShtamp}>
           {time}

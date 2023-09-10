@@ -4,6 +4,8 @@
   display: flex;
   gap: 5px;
   margin-right: auto;
+  animation: show 300ms linear 1 normal forwards;
+  transform-origin: left top;
 }
 
 .avatar {
@@ -46,7 +48,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr repeat(2, min-content);
-  grid-template-areas: "opponent opponent opponent" "content content content" "controls time readed";
+  grid-template-areas: "opponent . ." "content . ." ". time readed";
   align-items: center;
   gap: 8px;
   margin-left: 9px;
@@ -125,5 +127,16 @@
 @media (max-width: $sm-screen) {
   .opponentMessage__content {
     max-width: $message-content-width-sm;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
   }
 }

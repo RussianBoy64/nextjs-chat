@@ -1,79 +1,101 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import { typeShtamp } from "helpers/dayjs";
+import dayjs from "dayjs";
+import { ITime, getTime } from "helpers/dayjs";
 import { StaticImageData } from "next/image";
+import USERS, { userIds } from "users/users";
 
 export interface IMessage {
+  messageId: number;
   authorId: number;
   authorName?: string;
   authorPosition?: string;
   authorAvatar?: StaticImageData;
   text: string;
   photo: StaticImageData[];
-  timeShtamp: typeShtamp;
+  timeShtamp: ITime;
 }
 
-interface chatState {}
+export type messageToSend = Pick<IMessage, "authorId" | "text" | "photo">;
+export type messageToEdit = Pick<IMessage, "messageId" | "text" | "photo">;
 
-export const useCartStore = create<chatState>()(
+interface chatState {
+  messagesMap: { [key: string]: number };
+  messages: IMessage[];
+  isBotWriting: boolean;
+  addMessage: (messageData: messageToSend) => void;
+  editMessage: (messageData: messageToEdit) => void;
+  removeMessage: (messageId: number) => void;
+  setIsBotWriting: (isWriting: boolean) => void;
+}
+
+export const chatStore = create<chatState>()(
   persist(
     (set) => ({
-      // productId: [],
-      // productsInCart: [],
-      // totalProducts: 0,
-      // total: 0,
-      // promoCode: "",
-      // isPromoCodeValid: false,
-      // addProductToCart: (productToAdd) =>
-      //   set((state) => ({
-      //     productId: [...state.productId, productToAdd.id],
-      //     productsInCart: [...state.productsInCart, productToAdd],
-      //     totalProducts: state.totalProducts + productToAdd.price,
-      //   })),
-      // removeProductFromCart: (productToRemove) =>
-      //   set((state) => ({
-      //     productId: state.productId.filter((id) => id !== productToRemove.id),
-      //     productsInCart: state.productsInCart.filter(
-      //       (product) => product.id !== productToRemove.id
-      //     ),
-      //     totalProducts: state.totalProducts - productToRemove.price,
-      //   })),
-      // clearCart: () =>
-      //   set(() => ({
-      //     productId: [],
-      //     productsInCart: [],
-      //     totalProducts: 0,
-      //     total: 0,
-      //   })),
-      // increaseAmount: (productToIncreace) =>
-      //   set((state) => {
-      //     const productsInCart = state.productsInCart.map((product) => {
-      //       if (product.id === productToIncreace.id && product.amount) product.amount++;
-      //       return product;
-      //     });
-      //     return {
-      //       productsInCart: productsInCart,
-      //       totalProducts: state.totalProducts + productToIncreace.price,
-      //     };
-      //   }),
-      // decreaseAmount: (productToDecreace) =>
-      //   set((state) => {
-      //     const productsInCart = state.productsInCart.map((product) => {
-      //       if (product.id === productToDecreace.id && product.amount) product.amount--;
-      //       return product;
-      //     });
-      //     return {
-      //       productsInCart: productsInCart,
-      //       totalProducts: state.totalProducts - productToDecreace.price,
-      //     };
-      //   }),
-      // addPromoCode: (promoCodeToAdd) =>
-      //   set(() => ({
-      //     promoCode: promoCodeToAdd,
-      //   })),
-      // setIsPromoCodeValid: (isValid) => set(() => ({ isPromoCodeValid: isValid })),
+      messagesMap: {},
+      messages: [],
+      isBotWriting: false,
+      addMessage: ({ authorId, text, photo }) =>
+        set((state) => {
+          const messageId = dayjs().valueOf();
+          const messageIndex = state.messages.length;
+          const message: IMessage = {
+            messageId,
+            authorId: authorId,
+            authorName: USERS[authorId].name,
+            authorPosition: USERS[authorId].position,
+            authorAvatar: USERS[authorId].avatar,
+            text,
+            photo,
+            timeShtamp: getTime(),
+          };
+          const updatedMessageMap = {
+            ...state.messagesMap,
+            [`${messageId}`]: messageIndex,
+          };
+
+          const isBotWriting = authorId !== userIds.Vova ? false : state.isBotWriting;
+
+          return {
+            isBotWriting: isBotWriting,
+            messagesMap: updatedMessageMap,
+            messages: [...state.messages, message],
+          };
+        }),
+      editMessage: ({ messageId, text, photo }) =>
+        set((state) => {
+          const messageIndex = state.messagesMap[messageId];
+          const messageToEdit = state.messages[messageIndex];
+
+          messageToEdit.text = text;
+          messageToEdit.photo = photo;
+
+          state.messages.splice(messageIndex, 1, messageToEdit);
+
+          return {
+            messages: [...state.messages],
+          };
+        }),
+      removeMessage: (messageId) =>
+        set((state) => {
+          const messageIndex = state.messagesMap[messageId];
+
+          state.messages.splice(messageIndex, 1);
+
+          const updatedMessageMap = Object.fromEntries(
+            state.messages.map((message, index) => [message.messageId, index])
+          );
+
+          return {
+            messagesMap: updatedMessageMap,
+            messages: [...state.messages],
+          };
+        }),
+      setIsBotWriting: (isWriting) => set({ isBotWriting: isWriting }),
     }),
-    { name: "chat-storage" }
+    {
+      name: "chat-storage",
+    }
   )
 );
