@@ -1,10 +1,5 @@
-import { StaticImageData } from "next/image";
 import { MutableRefObject } from "react";
 import { create } from "zustand";
-
-import img1 from "@/public/C1Lfg6V_PYE.jpg";
-import img2 from "@/public/jdz6Ks7tRrM.jpg";
-import img3 from "@/public/rpWukAIpAwI.jpg";
 
 interface chatInputState {
   inputValue: string;
