@@ -26,8 +26,6 @@ const UploadBtn = () => {
 
     if (!inputFile.files) return;
 
-    console.log(inputFile.files);
-
     const photosToAdd = [...inputPhoto, ...getNewPhotos(inputFile.files)].slice(0, 5);
 
     addPhotos(photosToAdd);
