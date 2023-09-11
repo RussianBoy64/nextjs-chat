@@ -13,14 +13,21 @@ interface messageInputProps {
 }
 
 const MessageInput: React.FC<messageInputProps> = ({ inputRef }) => {
-  const [inputValue, setInputValue, messageToEditId, setMessageToEditId] = chatInputStore(
-    (state) => [
-      state.inputValue,
-      state.setInputValue,
-      state.messageToEditId,
-      state.setMessageToEditId,
-    ]
-  );
+  const [
+    inputValue,
+    inputPhotos,
+    setInputValue,
+    clearInputValue,
+    messageToEditId,
+    setMessageToEditId,
+  ] = chatInputStore((state) => [
+    state.inputValue,
+    state.inputPhotos,
+    state.setInputValue,
+    state.clearInputValue,
+    state.messageToEditId,
+    state.setMessageToEditId,
+  ]);
   const [addMessage, editMessage, isBotWriting] = chatStore((state) => [
     state.addMessage,
     state.editMessage,
@@ -44,30 +51,30 @@ const MessageInput: React.FC<messageInputProps> = ({ inputRef }) => {
 
     if (isEnterPressed || isNumpadEnterPressed) {
       event.preventDefault();
-      if (inputValue === "") return;
+      if (inputValue === "" && inputPhotos.length === 0) return;
 
       if (messageToEditId) {
         const editedMessage: messageToEdit = {
           messageId: messageToEditId,
           text: inputValue,
-          photo: [],
+          photo: inputPhotos,
         };
 
         editMessage(editedMessage);
-        setInputValue("");
+        clearInputValue();
         setMessageToEditId(null);
       } else {
         const message: messageToSend = {
           authorId: userIds.Vova,
           text: inputValue,
-          photo: [],
+          photo: inputPhotos,
         };
 
         const textToAnswer = message.text;
         const isPhoto = message.photo.length > 0;
 
         addMessage(message);
-        setInputValue("");
+        clearInputValue();
         getAnswerFromBot(textToAnswer, isPhoto, addMessage, isBotWriting);
       }
     }

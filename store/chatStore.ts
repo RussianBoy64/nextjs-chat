@@ -13,7 +13,7 @@ export interface IMessage {
   authorPosition?: string;
   authorAvatar?: StaticImageData;
   text: string;
-  photo: StaticImageData[];
+  photo: string[];
   timeShtamp: ITime;
 }
 

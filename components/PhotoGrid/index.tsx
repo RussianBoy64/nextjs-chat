@@ -52,10 +52,10 @@ const PhotoGrid: React.FC<photoGridProps> = ({ images }) => {
       {images.map((image, index) => (
         <Image
           className={styles.photoGrid__image}
-          src={image.src}
+          src={image}
           alt={`photo-${index}`}
-          width={image.width}
-          height={image.height}
+          width={100}
+          height={100}
           key={index}
         />
       ))}

@@ -1,12 +1,8 @@
 @import "@/styles/variables.scss";
 
 .footer {
-  padding: 0 13px;
+  position: relative;
+  z-index: 1000;
   border-top: 1px solid $border-color;
-}
-
-@media (max-width: $sm-screen) {
-  .footer {
-    padding: 0 10px;
-  }
+  background-color: $white;
 }

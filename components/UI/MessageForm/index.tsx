@@ -9,19 +9,20 @@ import SmileBtn from "@/UI/Buttons/SmileBtn";
 import MessageInput from "../MessageInput";
 import UploadBtn from "../Buttons/UploadBtn";
 import SendBtn from "../Buttons/SendBtn";
+import UploadBar from "../UploadBar";
 
 import styles from "./messageForm.module.scss";
 
 const MessageForm = () => {
   const inputRef = useRef(null);
-  const [inpuValue, setInputValue, messageToEditId, setMessageToEditId] = chatInputStore(
-    (state) => [
+  const [inputValue, inputPhotos, clearInputValue, messageToEditId, setMessageToEditId] =
+    chatInputStore((state) => [
       state.inputValue,
-      state.setInputValue,
+      state.inputPhotos,
+      state.clearInputValue,
       state.messageToEditId,
       state.setMessageToEditId,
-    ]
-  );
+    ]);
   const [addMessage, editMessage, isBotWriting] = chatStore((state) => [
     state.addMessage,
     state.editMessage,
@@ -34,25 +35,25 @@ const MessageForm = () => {
     if (messageToEditId) {
       const editedMessage: messageToEdit = {
         messageId: messageToEditId,
-        text: inpuValue,
-        photo: [],
+        text: inputValue,
+        photo: inputPhotos,
       };
 
       editMessage(editedMessage);
-      setInputValue("");
+      clearInputValue();
       setMessageToEditId(null);
     } else {
       const message: messageToSend = {
         authorId: userIds.Vova,
-        text: inpuValue,
-        photo: [],
+        text: inputValue,
+        photo: inputPhotos,
       };
 
       const textToAnswer = message.text;
       const isPhoto = message.photo.length > 0;
 
       addMessage(message);
-      setInputValue("");
+      clearInputValue();
       getAnswerFromBot(textToAnswer, isPhoto, addMessage, isBotWriting);
     }
   };
@@ -62,7 +63,8 @@ const MessageForm = () => {
       <SmileBtn />
       <MessageInput inputRef={inputRef} />
       <UploadBtn />
-      <SendBtn isDisabled={inpuValue === ""} />
+      <SendBtn isDisabled={inputValue === "" && inputPhotos.length === 0} />
+      <UploadBar />
     </form>
   );
 };

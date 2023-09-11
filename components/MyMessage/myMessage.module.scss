@@ -4,7 +4,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr repeat(2, min-content);
-  grid-template-areas: "content content content" "controls time readed";
+  grid-template-areas: "content . ." "controls time readed";
   align-items: center;
   gap: 8px;
   margin: 0 9px 0 auto;
@@ -63,8 +63,12 @@
 }
 
 @media (max-width: $sm-screen) {
-  .myMessage__content {
-    max-width: $message-content-width-sm;
+  .myMessage {
+    grid-template-areas: "content content content" "controls time readed";
+
+    &__content {
+      max-width: $message-content-width-sm;
+    }
   }
 }
 

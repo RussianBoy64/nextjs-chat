@@ -23,8 +23,9 @@ const EditBtn: React.FC<editBtnProps> = ({ messageId, color }) => {
     state.messagesMap,
     state.messages,
   ]);
-  const [setInputValue, setMessageToEditId] = chatInputStore((state) => [
+  const [setInputValue, addPhotos, setMessageToEditId] = chatInputStore((state) => [
     state.setInputValue,
+    state.addPhotos,
     state.setMessageToEditId,
   ]);
   const messageToEdit: IMessage = messages[messagesMap[messageId]];
@@ -35,6 +36,7 @@ const EditBtn: React.FC<editBtnProps> = ({ messageId, color }) => {
   const onClickHandler: MouseEventHandler = () => {
     setMessageToEditId(messageId);
     setInputValue(messageToEdit.text);
+    addPhotos(messageToEdit.photo);
   };
 
   return (

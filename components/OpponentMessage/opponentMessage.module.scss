@@ -125,8 +125,13 @@
 }
 
 @media (max-width: $sm-screen) {
-  .opponentMessage__content {
-    max-width: $message-content-width-sm;
+  .opponentMessage {
+    grid-template-areas: "opponent opponent opponent" "content content content" ". time readed";
+    margin-left: 0;
+
+    &__content {
+      max-width: $message-content-width-sm;
+    }
   }
 }
 

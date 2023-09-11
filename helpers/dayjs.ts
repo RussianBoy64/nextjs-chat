@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 
 export type typeShtamp = dayjs.Dayjs;
 
