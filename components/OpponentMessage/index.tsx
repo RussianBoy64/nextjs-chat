@@ -1,9 +1,6 @@
-import { getTime } from "helpers/dayjs";
 import { IMessage } from "@/store/chatStore";
 
 import PhotoGrid from "../PhotoGrid";
-import EditBtn, { editBtnColors } from "../UI/Buttons/EditBtn";
-import RemoveBtn, { removeBtnColors } from "../UI/Buttons/RemoveBtn";
 import ReadIndicator from "@/public/svg/ReadIndicator";
 
 import styles from "./opponentMessage.module.scss";

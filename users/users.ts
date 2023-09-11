@@ -4,12 +4,13 @@ import nicoleAvatar from "@/avatars/nicole.webp";
 import AubreyAvatar from "@/avatars/aubrey.webp";
 import JavAvatar from "@/avatars/jav.webp";
 import { messageToSend } from "@/store/chatStore";
+import { StaticImageData } from "next/image";
 
 export interface IUser {
   id: number;
   name: string;
   position: string;
-  avatar: string;
+  avatar: StaticImageData;
 }
 
 export enum userIds {

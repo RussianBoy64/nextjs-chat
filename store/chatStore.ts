@@ -4,13 +4,14 @@ import { persist } from "zustand/middleware";
 import dayjs from "dayjs";
 import { ITime, getTime } from "helpers/dayjs";
 import USERS, { userIds } from "users/users";
+import { StaticImageData } from "next/image";
 
 export interface IMessage {
   messageId: number;
   authorId: number;
   authorName?: string;
   authorPosition?: string;
-  authorAvatar?: string;
+  authorAvatar?: StaticImageData;
   text: string;
   photo: string[];
   timeShtamp: ITime;
@@ -44,7 +45,7 @@ export const chatStore = create<chatState>()(
             authorId: authorId,
             authorName: USERS[authorId].name,
             authorPosition: USERS[authorId].position,
-            authorAvatar: USERS[authorId].avatar.src,
+            authorAvatar: USERS[authorId].avatar,
             text,
             photo,
             timeShtamp: getTime(),
