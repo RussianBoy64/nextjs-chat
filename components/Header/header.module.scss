@@ -1,0 +1,87 @@
+@import "@/styles/variables.scss";
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  height: 68px;
+  padding: 13px;
+  background-color: $white;
+  border-bottom: 1px solid $border-color;
+
+  &__avatarList {
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem !important;
+  }
+
+  &__avatar {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    margin-left: -0.5rem;
+    padding: 0;
+    border: 2px solid $white;
+    border-radius: 50%;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px $avatar-border-color inset;
+    }
+  }
+
+  &__chatInfo {
+    text-align: center;
+  }
+
+  &__chatName {
+    font-size: $fs-l;
+    font-weight: 600;
+    line-height: 18px;
+  }
+
+  &__lastVisit {
+    font-size: $fs-m;
+    color: $gray;
+    font-weight: 400;
+  }
+}
+
+@for $i from 0 to 4 {
+  .header__avatar:nth-child(#{$i + 1}) {
+    z-index: 100 + $i * 10;
+  }
+}
+
+@media (max-width: $lg-screen) {
+  .header {
+    &__avatar {
+      width: 27px;
+      height: 27px;
+    }
+
+    &__chatName {
+      font-size: $fs-m;
+    }
+
+    &__lastVisit {
+      font-size: $fs-s;
+    }
+  }
+}
+
+@media (max-width: $sm-screen) {
+  .header {
+    gap: 0.2rem;
+    padding: 10px;
+  }
+}

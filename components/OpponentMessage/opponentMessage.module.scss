@@ -1,0 +1,147 @@
+@import "@/styles/variables.scss";
+
+.wrapper {
+  display: flex;
+  gap: 5px;
+  margin-right: auto;
+  animation: show 300ms linear 1 normal forwards;
+  transform-origin: left top;
+}
+
+.avatar {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px $avatar-border-color inset;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    background-color: $online-status-color;
+    border-radius: 50%;
+  }
+
+  &__img {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}
+
+.opponentMessage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr repeat(2, min-content);
+  grid-template-areas: "opponent . ." "content . ." ". time readed";
+  align-items: center;
+  gap: 8px;
+  margin-left: 9px;
+  padding: 10px 15px;
+  color: $gray-dark;
+  background-color: $message-bubble-gray;
+  border-radius: $border-radius;
+
+  &_tip::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 23px;
+    border-radius: 6px;
+    background-color: $message-bubble-gray;
+    transform: skewX(45deg);
+  }
+
+  &__opponent {
+    grid-area: opponent;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__content {
+    grid-area: content;
+    max-width: $message-content-width-lg;
+  }
+
+  &__text {
+    width: 100%;
+    line-height: 20px;
+  }
+
+  &__controls {
+    grid-area: controls;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__timeShtamp {
+    grid-area: time;
+    font-size: $fs-s;
+    white-space: nowrap;
+  }
+}
+
+.opponent {
+  &__name {
+    font-size: $fs-l;
+    font-weight: 600;
+  }
+
+  &__position {
+    font-size: $fs-m;
+    font-weight: 400;
+    color: $gray;
+  }
+}
+
+@media (max-width: $lg-screen) {
+  .opponentMessage {
+    padding: 4px 7px;
+
+    &__content {
+      max-width: $message-content-width-md;
+    }
+  }
+}
+
+@media (max-width: $sm-screen) {
+  .opponentMessage {
+    grid-template-areas: "opponent opponent opponent" "content content content" ". time readed";
+    margin-left: 0;
+
+    &__content {
+      max-width: $message-content-width-sm;
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}

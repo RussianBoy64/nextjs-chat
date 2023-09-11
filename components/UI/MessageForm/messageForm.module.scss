@@ -1,0 +1,16 @@
+@import "@/styles/variables.scss";
+
+.messageForm {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 0 13px;
+  background-color: $white;
+}
+
+@media (max-width: $sm-screen) {
+  .messageForm {
+    padding: 0 10px;
+  }
+}

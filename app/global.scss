@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&display=swap");
+
+@import "@/styles/normalize.scss";
+@import "@/styles/variables.scss";
+
+body {
+  font-family: "Jost", sans-serif;
+  font-size: $fs-m;
+  color: $gray-dark;
+  background-color: $white;
+}
+
+main {
+  position: relative;
+  min-height: 350px;
+}

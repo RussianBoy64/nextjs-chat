@@ -1,0 +1,21 @@
+@import "@/styles/variables.scss";
+
+.messageFrame {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  padding: 0 13px 15px;
+  overflow-y: auto;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 60px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

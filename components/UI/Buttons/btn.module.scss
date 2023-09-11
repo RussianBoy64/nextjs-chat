@@ -1,0 +1,91 @@
+@import "@/styles/variables.scss";
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-end;
+  padding: 16px 12px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  & path {
+    transition: all $tr-time ease-in-out;
+  }
+
+  &:hover path {
+    fill: $blue;
+  }
+
+  &:active path {
+    fill: $gray-dark;
+  }
+
+  &:disabled {
+    cursor: initial;
+
+    &:hover path {
+      fill: $send-disabled-color;
+    }
+  }
+
+  &_row {
+    padding: 16px 6px 16px 12px;
+
+    & + .btn {
+      padding: 16px 12px 16px 6px;
+    }
+  }
+
+  &_active {
+    & path {
+      fill: $blue;
+    }
+  }
+}
+
+.messageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all $tr-time ease-in-out;
+
+  path {
+    transition: all $tr-time ease-in-out;
+  }
+
+  &_light {
+    path {
+      fill: $white;
+    }
+
+    &:hover path {
+      fill: $gray-dark;
+    }
+
+    &:active path {
+      fill: $white;
+    }
+  }
+
+  &_dark {
+    path {
+      fill: $gray-dark;
+    }
+
+    &:hover path {
+      fill: $blue;
+    }
+
+    &:active path {
+      fill: $gray-dark;
+    }
+  }
+}

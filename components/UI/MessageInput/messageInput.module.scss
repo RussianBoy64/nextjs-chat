@@ -1,0 +1,13 @@
+.messageInput {
+  flex-grow: 1;
+  height: 25px;
+  max-height: 35vh;
+  margin: 11px 0;
+  outline: 0;
+  border: 0;
+  resize: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
