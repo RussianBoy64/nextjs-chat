@@ -1,5 +1,3 @@
-import { StaticImageData } from "next/image";
-
 import vovaAvatar from "@/avatars/vova.webp";
 import janetAvatar from "@/avatars/janet.webp";
 import nicoleAvatar from "@/avatars/nicole.webp";
@@ -11,7 +9,7 @@ export interface IUser {
   id: number;
   name: string;
   position: string;
-  avatar: StaticImageData;
+  avatar: string;
 }
 
 export enum userIds {
@@ -62,7 +60,7 @@ export const getAnswerFromBot = (
 
   if (isPhoto) {
     message.text = "Nice photo! Looak at my avatar.";
-    message.photo.push(botData.avatar);
+    message.photo.push(botData.avatar.src);
   }
 
   setIsBotWriting(true);

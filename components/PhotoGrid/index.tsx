@@ -1,9 +1,9 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 import styles from "./photoGrid.module.scss";
 
 interface photoGridProps {
-  images: StaticImageData[];
+  images: string[];
 }
 
 type getPhotoGridLayoutType = (imagesCount: number) => string;

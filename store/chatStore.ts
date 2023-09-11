@@ -3,7 +3,6 @@ import { persist } from "zustand/middleware";
 
 import dayjs from "dayjs";
 import { ITime, getTime } from "helpers/dayjs";
-import { StaticImageData } from "next/image";
 import USERS, { userIds } from "users/users";
 
 export interface IMessage {
@@ -11,7 +10,7 @@ export interface IMessage {
   authorId: number;
   authorName?: string;
   authorPosition?: string;
-  authorAvatar?: StaticImageData;
+  authorAvatar?: string;
   text: string;
   photo: string[];
   timeShtamp: ITime;
