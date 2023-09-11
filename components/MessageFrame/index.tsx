@@ -4,6 +4,7 @@ import { userIds } from "users/users";
 import { useStore } from "zustand";
 import { chatStore } from "@/store/chatStore";
 import useMounted from "hooks/useMounted";
+import { MutableRefObject, useEffect, useRef } from "react";
 
 import MyMessage from "@/components/MyMessage";
 import OpponentMessage from "../OpponentMessage";
@@ -12,7 +13,14 @@ import styles from "./messageFrame.module.scss";
 
 const MessageFrame: React.FC = () => {
   const mounted = useMounted();
+  const bottomDivRef: MutableRefObject<null | HTMLDivElement> = useRef(null);
   const messages = useStore(chatStore, (state) => state.messages);
+
+  const scrollToBottom = () => {
+    bottomDivRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(scrollToBottom, [messages]);
 
   if (!mounted) return null;
 
@@ -32,6 +40,7 @@ const MessageFrame: React.FC = () => {
             />
           );
         })}
+        <div ref={bottomDivRef}></div>
       </div>
     </div>
   );
