@@ -44,7 +44,7 @@ export const chatStore = create<chatState>()(
             authorId: authorId,
             authorName: USERS[authorId].name,
             authorPosition: USERS[authorId].position,
-            authorAvatar: USERS[authorId].avatar,
+            authorAvatar: USERS[authorId].avatar.src,
             text,
             photo,
             timeShtamp: getTime(),
